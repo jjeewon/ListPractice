@@ -55,4 +55,7 @@ dependencies {
     implementation 'com.google.dagger:dagger-android-support:2.25.4'
     annotationProcessor 'com.google.dagger:dagger-android-processor:2.25.4'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.25.4'
+
+    // 디자인 서포트 라이브러리
+    implementation 'com.google.android.material:material:1.1.0'
 }
