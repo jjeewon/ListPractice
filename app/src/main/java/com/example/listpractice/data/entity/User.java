@@ -7,6 +7,8 @@ public class User {
     private String email;
     private String phone;
     private String website;
+    private Address address;
+    private Company company;
 
     public long getId() {
         return id;
@@ -30,5 +32,13 @@ public class User {
 
     public String getWebsite() {
         return website;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public Company getCompany() {
+        return company;
     }
 }
