@@ -76,4 +76,8 @@ dependencies {
 
     // fragment
     implementation 'androidx.fragment:fragment:1.2.2'
+
+    // navigation component
+    implementation 'androidx.navigation:navigation-fragment:2.2.1'
+    implementation 'androidx.navigation:navigation-ui:2.2.1'
 }
