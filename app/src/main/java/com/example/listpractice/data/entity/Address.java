@@ -5,6 +5,7 @@ public class Address {
     private String suite;
     private String city;
     private String zipcode;
+    private Geo geo;
 
     public String getCity() {
         return city;
@@ -20,5 +21,9 @@ public class Address {
 
     public String getZipcode() {
         return zipcode;
+    }
+
+    public Geo getGeo() {
+        return geo;
     }
 }
