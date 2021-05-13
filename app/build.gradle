@@ -70,4 +70,7 @@ dependencies {
 
     // multidex
     implementation 'androidx.multidex:multidex:2.0.1'
+
+    // timber, 로그 라이브러리
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 }
