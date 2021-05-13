@@ -80,7 +80,7 @@ dependencies {
     // navigation component
     implementation 'androidx.navigation:navigation-fragment:2.2.1'
     implementation 'androidx.navigation:navigation-ui:2.2.1'
-    
+
     // cardview
     implementation 'androidx.cardview:cardview:1.0.0'
 }
