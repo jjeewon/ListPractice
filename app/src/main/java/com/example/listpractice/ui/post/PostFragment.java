@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.listpractice.databinding.FragmentPostBinding;
 import com.example.listpractice.di.AppViewModelFactory;
@@ -34,6 +35,26 @@ public class PostFragment extends DaggerFragment {
 
     PostViewModel viewModel;
 
+    @Inject
+    PostAdapter adapter;
+    @Inject
+    LinearLayoutManager layoutManager;
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
+        super.onViewCreated(view, savedInstanceState);
+        // LifeCycle Owner 등록
+        binding.setLifecycleOwner(getViewLifecycleOwner());
+        // RecycleView Adapter 지정
+        binding.recyclerView.setAdapter(adapter);
+        // RecyclerView 레이아웃 매니저 지정
+        binding.recyclerView.setLayoutManager(layoutManager);
+        // 바인딩 클래스에 ViewModel 연결
+        binding.setViewModel(viewModel);
+        // ViewModel이 가진 게시 글 목록을 구독하여 Adapter에 반영
+
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -50,6 +71,8 @@ public class PostFragment extends DaggerFragment {
     public View onCreateView(@NonNull LayoutInflater layoutInflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState){
         return binding.getRoot();
     }
+
+
 
 
 }
