@@ -46,7 +46,7 @@ public class AppModule {
                 .baseUrl("https://jsonplaceholder.typicode.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
-                .build();
+                .build(); 
     }
 
 }
