@@ -48,7 +48,7 @@ public class PostFragment extends DaggerFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater layoutInflater, @NonNull ViewGroup container, @NonNull Bundle savedInstanceState){
-        return binding.getRoot();   
+        return binding.getRoot();
     }
 
 
