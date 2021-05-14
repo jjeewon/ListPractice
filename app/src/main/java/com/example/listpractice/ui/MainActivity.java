@@ -31,15 +31,7 @@ public class MainActivity extends DaggerAppCompatActivity {
 
     }
 
-    @Module
-    public abstract class ActivityModule{
-        /**
-         * MainActivity를 위한 서브 컴포넌트를 정의
-         */
-        @ActivityScope
-        @ContributesAndroidInjector(modules = MainModule.class)
-        abstract MainActivity mainActivity();
-    }
+
 
 
 }

@@ -1,4 +1,4 @@
-package com.example.listpractice.data.entity;
+package com.example.listpractice.di;
 
 import androidx.lifecycle.ViewModel;
 
