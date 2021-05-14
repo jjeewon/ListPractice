@@ -15,7 +15,9 @@ import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-@Module(includes = ViewModelModule.class)
+@Module(includes = {ViewModelModule.class
+                    ,RetrofitModule.class
+})
 public class AppModule {
 
     @Provides
@@ -46,7 +48,7 @@ public class AppModule {
                 .baseUrl("https://jsonplaceholder.typicode.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
-                .build(); 
+                .build();
     }
 
 }
