@@ -6,10 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.listpractice.R;
 import com.example.listpractice.databinding.ActivityMainBinding;
+import com.example.listpractice.di.ActivityScope;
 
 import javax.inject.Inject;
 
 import dagger.Lazy;
+import dagger.Module;
+import dagger.android.ContributesAndroidInjector;
 import dagger.android.support.DaggerAppCompatActivity;
 
 //멤버 인젝션을 하도록 DaggerAppCompatActivity를 상속한다.
@@ -25,6 +28,18 @@ public class MainActivity extends DaggerAppCompatActivity {
         // 이 액티비티를 lifecycleOwner로 설정하여,
         // 생명 주기에 안전하게 데이터 바인딩을 할 수 있도록 한다.
         binding.get().setLifecycleOwner(this);
-        
+
     }
+
+    @Module
+    public abstract class ActivityModule{
+        /**
+         * MainActivity를 위한 서브 컴포넌트를 정의
+         */
+        @ActivityScope
+        @ContributesAndroidInjector(modules = MainModule.class)
+        abstract MainActivity mainActivity();
+    }
+
+
 }
