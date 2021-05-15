@@ -10,13 +10,13 @@ import com.example.listpractice.data.PostService;
 import com.example.listpractice.util.SingleLiveEvent;
 
 import java.util.List;
-import java.util.Observable;
 import java.util.Timer;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import timber.log.Timber;
@@ -43,18 +43,17 @@ public class PostViewModel extends AndroidViewModel {
     }
 
     /**
-     * 게시 글 목록 불러오기
+     * 게시글 목록 불러오기
      */
-    public void loadPosts(){
-        compositeDisposable.add(postService.getPosts().
-                flatMapObservable(Observable::fromIterable).
-                map(post -> new PostItem(post))
+    public void loadPosts() {
+        compositeDisposable.add(postService.getPosts()
+                .flatMapObservable(Observable::fromIterable)
+                .map(post -> new PostItem(post,this))
                 .toList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSuccess(item -> loading.postValue(false))
                 .subscribe(livePosts::setValue, errorEvent::setValue));
-
     }
 
     public MutableLiveData<Boolean> getLoading() {
