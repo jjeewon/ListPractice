@@ -19,7 +19,8 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
             app:cardCornerRadius="8dp"
-            app:cardUseCompatPadding="true">
+            app:cardUseCompatPadding="true"
+            android:onClick="@{v->item.eventListener.onPostClick(item)}">
             <TextView
                 android:id="@+id/title"
                 android:layout_width="match_parent"
