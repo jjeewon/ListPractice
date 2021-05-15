@@ -21,12 +21,13 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import timber.log.Timber;
 
-public class PostViewModel extends AndroidViewModel {
+public class PostViewModel extends AndroidViewModel implements PostItem.EventListener {
     private final MutableLiveData<Boolean> loading = new MutableLiveData<>(true);
     @NonNull
     private final PostService postService;
     @NonNull
     private final SingleLiveEvent<Throwable> errorEvent;
+    private final SingleLiveEvent<PostItem> postClickEvent = new SingleLiveEvent<>();
 
     // RecyclerView에 표현할 아이템들을 LiveData로 관리
     private final MutableLiveData<List<PostItem>> livePosts = new MutableLiveData<>();
@@ -77,5 +78,16 @@ public class PostViewModel extends AndroidViewModel {
         compositeDisposable.dispose();
     }
 
+    // PostItem 클릭 이벤트 구현
+    @Override
+    public void onPostClick(PostItem postItem) {
+        // Fragment로 이벤트를 전달하도록
+        // SingleLiveEvent의 값 변경
+        postClickEvent.setValue(postItem);
+    }
 
+    // PostFragment로 postClickEvent qustn shcnf
+    public SingleLiveEvent<PostItem> getPostClickEvent(){
+        return postClickEvent;
+    }
 }
